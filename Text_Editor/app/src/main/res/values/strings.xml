@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Text_Editor</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="Colors">
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Black</item>
+        <item>Magneta</item>
+        <item>Cyan</item>
+    </string-array>
+    <string name="title_activity_display">Display</string>
+</resources>
