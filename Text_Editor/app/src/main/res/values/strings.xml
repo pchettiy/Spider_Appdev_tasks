@@ -9,7 +9,7 @@
         <item>Green</item>
         <item>Yellow</item>
         <item>Black</item>
-        <item>Magneta</item>
+        <item>Magenta</item>
         <item>Cyan</item>
     </string-array>
     <string name="title_activity_display">Display</string>
