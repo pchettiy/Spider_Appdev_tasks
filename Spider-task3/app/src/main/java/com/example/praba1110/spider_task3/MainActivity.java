@@ -29,7 +29,7 @@ import java.util.logging.Handler;
 public class MainActivity extends ActionBarActivity {
     TextView timer;
     TextView value;
-    long n, t;
+    long n, t, v;
     String url = "http://spider.nitt.edu/~vishnu/time.php";
 
 
@@ -39,14 +39,14 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         timer = (TextView) findViewById(R.id.timer);
         value = (TextView) findViewById(R.id.value);
-        t = 10;
+        t=10;
         Main();
+
     }
 
     public void Main() {
 
         new GetData().execute(url);
-
         looper();
 
     }
@@ -58,8 +58,8 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void looper() {
-        new CountDownTimer(1000 * t, 1000) {
+    public void looper()  {
+        new CountDownTimer((1000 * t+100), 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timer.setText(String.valueOf(millisUntilFinished / 1000));
@@ -68,9 +68,10 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onFinish() {
+                value.setText(String.valueOf(v));
+
                 t=n;
                 Main();
-
             }
         }.start();
     }
@@ -102,8 +103,12 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(Long aLong) {
-            value.setText(String.valueOf(aLong));
+            v=aLong;
             n = aLong % 10;
+            if(n==0)
+            {
+                n=aLong%100;
+            }
         }
     }
 }
