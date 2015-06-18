@@ -31,8 +31,8 @@ public class MainActivity extends ActionBarActivity {
     TextView value;
     long n, t, v;
     String url = "http://spider.nitt.edu/~vishnu/time.php";
-
-
+    String myurl = "https://24bf5fee.ngrok.com/task3.php";
+    String s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +69,6 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onFinish() {
                 value.setText(String.valueOf(v));
-
                 t=n;
                 Main();
             }
@@ -80,17 +79,15 @@ public class MainActivity extends ActionBarActivity {
         @Override
         protected Long doInBackground(String... params) {
             long no = 0;
+
             try {
                 URL url = new URL(params[0]);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 try {
-                    conn.setDoInput(true);
-                    conn.setDoOutput(true);
-                    conn.setRequestProperty("Accept-Encoding", "identity");
+                    conn.setRequestMethod("GET");
                     InputStreamReader input = new InputStreamReader(conn.getInputStream());
                     BufferedReader in = new BufferedReader(input);
-                    String i = in.readLine();
-                    no = Long.parseLong(i);
+                    no = Long.parseLong(in.readLine());
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
